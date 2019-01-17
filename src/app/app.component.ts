@@ -7,14 +7,14 @@ import { FormBuilder } from "@angular/forms";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
-  title = "http-awesome";
+  title: string = "http-awesome";
   data = [];
   imgUrl = [];
   myForm;
   dogGetReq = this.http.get("https://dog.ceo/api/breeds/image/random/30");
   constructor(private http: HttpClient, private fBuilder: FormBuilder) {
     this.http.get("https://jsonplaceholder.typicode.com/posts").subscribe(
-      data => {
+      (data: any) => {
         console.log(data);
         this.data = data;
       },
@@ -27,7 +27,7 @@ export class AppComponent {
     );
 
     this.dogGetReq.subscribe(
-      data => {
+      (data: any) => {
         console.log(data);
         this.imgUrl = data.message;
       },
